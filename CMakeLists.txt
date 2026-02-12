@@ -44,3 +44,8 @@ if (APPLE)
     target_link_libraries(${PROJECT_NAME} "-framework Cocoa")
     target_link_libraries(${PROJECT_NAME} "-framework OpenGL")
 endif()
+
+# Try to remove console
+if (WIN32 AND MINGW)
+    target_link_options(${PROJECT_NAME} PRIVATE -mwindows)
+endif()
