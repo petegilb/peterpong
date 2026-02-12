@@ -12,5 +12,5 @@ Build with CMAKE
 
 <h3>Third Party Assets</h3>
 - [raylib]()
-- [Win Jingle Sound (CC0)](https://opengameart.org/content/win-jingle)
+- [Win Jingle Sound CC0](https://opengameart.org/content/win-jingle)
 
