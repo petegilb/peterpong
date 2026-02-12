@@ -23,10 +23,18 @@ constexpr int screenWidth = 1280;
 constexpr int screenHeight = 960;
 constexpr int wallWidth = 16;
 constexpr Vector2 ScoreOffset = {screenWidth/16.0f, 32};
+constexpr int PointsToWin = 11;
+
+enum class EGameState {
+    PreGame,
+    MidGame,
+    EndGame
+};
 
 class PongGame{
 public:
     PongGame();
+    ~PongGame();
 
     void StartGame();
 
@@ -48,4 +56,9 @@ private:
 
     void SetRoundTimer();
     void HandleGoal(bool bLeft);
+
+    EGameState GameState = EGameState::PreGame;
+
+    // Sounds
+    Sound GameWinSound;
 };

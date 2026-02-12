@@ -12,6 +12,10 @@ Player::Player(){
     PaddleTexture = LoadTexture("resources/Paddle.png");
 }
 
+Player::~Player(){
+    UnloadTexture(PaddleTexture);
+}
+
 void Player::BeginPlay(){
     std::cout << "Player::BeginPlay()" << std::endl;
 

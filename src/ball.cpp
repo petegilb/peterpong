@@ -10,6 +10,16 @@ Ball::Ball(){
     Position = Vector2{screenWidth/2.f - BallWidth/2.f, screenHeight/2.f - BallHeight/2.f};
     Velocity = Vector2(0.f, 0.f);
     InitialPosition = Position;
+
+    // Load Sounds
+    BallHitSound = LoadSound("resources/peterpong_hit.wav");
+    BallPointSound = LoadSound("resources/peterpong_point.wav");
+}
+
+Ball::~Ball(){
+    // Unload Sounds
+    UnloadSound(BallHitSound);
+    UnloadSound(BallPointSound);
 }
 
 void Ball::Tick(float DeltaTime){
@@ -29,10 +39,6 @@ void Ball::Draw(){
 void Ball::Move(float DeltaTime){
     if (!bIsInitialized) return;
     Position += Velocity * DeltaTime;
-
-    // clamp it inside (don't need this anymore but still)
-    // Position.x = Clamp(Position.x, 0, screenWidth - BallWidth);
-    // Position.y = Clamp(Position.y, wallWidth, screenHeight-wallWidth-BallHeight);
 }
 
 void Ball::Start(){
@@ -51,6 +57,7 @@ void Ball::Start(){
 
     const Vector2 dir = { std::cos(angle), std::sin(angle) };
     Velocity = dir * InitialBallSpeed;
+    PlaySound(BallHitSound);
 }
 
 void Ball::Reset(){
@@ -78,6 +85,7 @@ void Ball::CalculateVelocity(){
         if (OnGoal){
             OnGoal(bHitLeftWall);
         }
+        PlaySound(BallPointSound);
         return;
     }
 
@@ -111,6 +119,8 @@ void Ball::CalculateVelocity(){
         BallSpeed = Clamp(BallSpeed, InitialBallSpeed, MaxBallSpeed);
         Velocity = dir * BallSpeed;
         if (bHitPlayer2) Velocity.x *= -1;
+
+        PlaySound(BallHitSound);
         return;
     }
 
@@ -122,6 +132,7 @@ void Ball::CalculateVelocity(){
 
     if (bHitTopWall || bHitBottomWall){
         Velocity.y *= -1;
+        PlaySound(BallHitSound);
     }
 
 }

@@ -12,6 +12,7 @@ constexpr float MaxBounceAngle = 60.f;
 class Ball{
 public:
     Ball();
+    ~Ball();
 
     void Tick(float DeltaTime);
     void Draw();
@@ -34,4 +35,8 @@ public:
     Player* Player2 = nullptr;
 
     std::function<void(bool bLeft)> OnGoal;
+
+    // Sounds
+    Sound BallHitSound;
+    Sound BallPointSound;
 };

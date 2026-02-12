@@ -11,6 +11,7 @@ constexpr float MoveSpeed = 500.f;
 class Player{
 public:
     Player();
+    ~Player();
 
     void BeginPlay();
     void Tick(float DeltaTime);
