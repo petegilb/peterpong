@@ -14,3 +14,7 @@ Build with CMAKE
 
 [raylib](https://www.raylib.com/) <br>
 [Win Jingle Sound CC0](https://opengameart.org/content/win-jingle)
+
+<h3> Game Screenshot </h3>
+
+![game screenshot](images/peterpong.png)
