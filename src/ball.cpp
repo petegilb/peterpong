@@ -64,6 +64,7 @@ void Ball::Reset(){
     Velocity = Vector2{0.f, 0.f};
     Position = InitialPosition;
     bIsInitialized = false;
+    BallSpeed = InitialBallSpeed;
 }
 
 void Ball::CalculateVelocity(){
@@ -130,9 +131,14 @@ void Ball::CalculateVelocity(){
     bool bHitTopWall = CheckCollisionRecs(BallRec, TopWall);
     bool bHitBottomWall = CheckCollisionRecs(BallRec, BottomWall);
 
-    if (bHitTopWall || bHitBottomWall){
+    if (bHitTopWall && Velocity.y <= 1){
         Velocity.y *= -1;
         PlaySound(BallHitSound);
     }
+    else if (bHitBottomWall && Velocity.y >= 1){
+        Velocity.y *= -1;
+        PlaySound(BallHitSound);
+    }
+
 
 }
