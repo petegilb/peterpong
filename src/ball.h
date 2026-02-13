@@ -4,7 +4,7 @@
 #include "player.h"
 #include "raylib.h"
 
-constexpr float InitialBallSpeed = 300.f;
+constexpr float InitialBallSpeed = 400.f;
 constexpr float MaxBallSpeed = 1200.f;
 constexpr float BallSpeedStep = 20.f;
 constexpr float MaxBounceAngle = 60.f;
